@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    private TaskRepository $taskRepository;
+    protected TaskRepository $taskRepository;
 
     public function __construct(TaskRepository $taskRepository)
     {
@@ -22,12 +22,13 @@ class TaskController extends Controller
         return view('tasks.index', ['tasks' =>  $tasks]);
     }
 
+    // Getting details of all Tasks
     public function create()
     {
         return view('tasks.create');
     }
 
-    // This is for editing data
+    // Getting details of single edit Task
     public function edit(Request $request)
     {
         $id = $request->route('taskId');
@@ -41,6 +42,7 @@ class TaskController extends Controller
         return view('tasks.edit', ['task' => $task]);
     }
 
+    // Storing a new task
     public function store(Request $request)
     {
         $taskDetails = [
@@ -53,6 +55,7 @@ class TaskController extends Controller
         return redirect()->Route('tasks');
     }
 
+    // Getting details of single Task
     public function show(Request $request)
     {
         $taskId = $request->route('taskId');
@@ -65,6 +68,7 @@ class TaskController extends Controller
 
         return view('tasks.show', ['task' => $task]);
     }
+
     public function update(Request $request)
     {
         $taskId = $request->route('taskId');
