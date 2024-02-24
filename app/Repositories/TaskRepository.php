@@ -2,11 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\TaskRepositoryInterface;
+use App\Interfaces\TaskInterface;
 use App\Models\Task;
 
-class TaskRepository implements TaskRepositoryInterface
-{
+class TaskRepository implements TaskInterface{
     public function getAllTasks()
     {
         return Task::all();
@@ -16,18 +15,15 @@ class TaskRepository implements TaskRepositoryInterface
         return Task::findOrFail($taskId);
     }
     public function deleteTask($taskId)
-    {
-        // $task = $this->find($taskId);
-        // $task->delete():
+    {        
         Task::destroy($taskId);
     }
-    public function createTask(array $taskDetails)
-    {
-        return Task::create($taskDetails);
+    public function createTask(array $task)
+    {   
+        return Task::create($task);
     }
     public function updateTask($taskId, array $newDetails)
     {
         return Task::whereId($taskId)->update($newDetails);
-    }
-    
+    }  
 }

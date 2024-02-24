@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface TaskRepositoryInterface
+interface TaskInterface
 {
     public function getAllTasks();
     public function getTaskById($taskId);

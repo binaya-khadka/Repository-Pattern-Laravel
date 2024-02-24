@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\TaskRepositoryInterface;
+use App\Repositories\TaskRepository;
+
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    private TaskRepositoryInterface $taskRepository;
+    private TaskRepository $taskRepository;
 
-    public function __construct(TaskRepositoryInterface $taskRepository)
+    public function __construct(TaskRepository $taskRepository)
     {
         $this->taskRepository = $taskRepository;
     }
@@ -26,13 +27,14 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
+    // This is for editing data
     public function edit(Request $request)
     {
-        $taskId = $request->route('taskId');
+        $id = $request->route('taskId');
 
-        $task = $this->taskRepository->getTaskById($taskId);
+        $task = $this->taskRepository->getTaskById($id);
 
-        if (empty($task)) {
+        if(!$task) {
             return back();
         }
 
