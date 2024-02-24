@@ -2,6 +2,7 @@
 
 @section('content')
     <div>
+        <h1 class="text-center" style="margin: 2rem 0; font-weight: 500;">Task Manager</h1>
         <a href="{{ route('create_task') }}" class="btn btn-primary float-right mt-5 mb-5">
             Add tasks
         </a>

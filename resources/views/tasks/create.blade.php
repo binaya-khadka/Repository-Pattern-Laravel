@@ -14,7 +14,7 @@
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary ">Create New Task</button>
-            <a href="{{ route('save_task') }}" class="btn btn-success float-right">Go Back</a>
+            <a href="{{ route('tasks') }}" class="btn btn-success float-right">Go Back</a>
         </div>
 
     </form>
